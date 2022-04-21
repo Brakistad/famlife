@@ -9,5 +9,5 @@ import (
 
 func main() {
 	fmt.Println(gofamlife.Famlifer())
-	fmt.Println(quote.Go)
+	fmt.Println(quote.Go())
 }
