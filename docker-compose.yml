@@ -55,7 +55,7 @@ services:
       - ./backend:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
-      - mongo
+      - mongodb
     networks:
       - backend
     expose: 
