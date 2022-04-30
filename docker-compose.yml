@@ -4,6 +4,7 @@ version: '3'
 networks:
   backend:
   frontend:
+  db:
 
 services:
   mongodb:
@@ -18,14 +19,16 @@ services:
       - "./mongodb/data/db:/data/db"
       - "./mongodb/data/configdb:/data/configdb"
     networks:
-      - backend
+      - db
     ports:
       - "27017:27017"
   mongo-express:
     image: mongo-express
     restart: unless-stopped
     networks:
-      - backend
+      - db
+    depends_on:
+      - mongodb
     ports:
       - 8081:8081
     environment:
@@ -44,6 +47,7 @@ services:
     restart: always
     networks:
       - frontend
+      - backend
     depends_on:
       - backend
 
@@ -58,5 +62,6 @@ services:
       - mongodb
     networks:
       - backend
+      - db
     expose: 
       - 3000

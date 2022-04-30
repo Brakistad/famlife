@@ -1,12 +1,15 @@
 # Create image based on the official Node image from dockerhub
 FROM node:lts-buster
 
+# Get all the code needed to run the app
+COPY . /usr/src/app
+
 # Create app directory
 WORKDIR /usr/src/app
 
 # Copy dependency definitions
-COPY package.json /usr/src/app
-COPY package-lock.json /usr/src/app
+COPY package.json package.json
+COPY package-lock.json package-lock.json
 
 # Install dependecies
 #RUN npm set progress=false \
@@ -14,8 +17,7 @@ COPY package-lock.json /usr/src/app
 #    && npm i install
 RUN npm ci
 
-# Get all the code needed to run the app
-COPY . /usr/src/app
+RUN chgrp -R node /usr/src/app && chmod -R 775 /usr/src/app
 
 # Expose the port the app runs in
 EXPOSE 3000
