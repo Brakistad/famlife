@@ -7,6 +7,7 @@ const routes = (app) => {
   const router = express.Router();
 
   router.post("/todos", (req, res) => {
+    console.log("Todos triggered: " +  req.body.text)
     const todo = new Todo({
       text: req.body.text,
     });

@@ -9,7 +9,7 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      todos: [],
+      todos: [{text:"something"}, {text:"something else"}],
     };
   }
 
@@ -25,6 +25,7 @@ export default class App extends React.Component {
   }
 
   handleAddTodo = (value) => {
+    console.log(value);
     axios
       .post("/api/todos", { text: value })
       .then(() => {
@@ -44,6 +45,7 @@ export default class App extends React.Component {
               <h1>Todos</h1>
               <div className="todo-app">
                 <AddTodo handleAddTodo={this.handleAddTodo} />
+                <>Todos will be listed here</>
                 <TodoList todos={this.state.todos} />
               </div>
             </div>

@@ -27,7 +27,11 @@ export default class AddTodo extends React.Component {
         <button className="btn btn-primary" type="submit">
           Add Todo
         </button>
+        <button className="btn btn-secondary" type="remove">
+          Remove Todo
+        </button>
       </form>
+      
     );
   }
 }
