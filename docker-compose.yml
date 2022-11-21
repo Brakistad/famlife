@@ -18,6 +18,7 @@ services:
       - "./mongodb/config:/etc/mongo"
       - "./mongodb/data/db:/data/db"
       - "./mongodb/data/configdb:/data/configdb"
+      - "./mongodb/init-mongo.js:/docker-entrypoint-initdb.d/mongo-init.js:ro"
     networks:
       - db
     ports:
